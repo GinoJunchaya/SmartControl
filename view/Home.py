@@ -1,5 +1,8 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+from view import RegistrarAsistencia
+from view import CrearProducto
+from util.styles import primaryButton, controlLabel, pageHeader
 
 class Home:
     def __init__(self, view):
@@ -20,9 +23,8 @@ class Home:
         self.window.show()
 
     def createBarraBotones(self):
-        self.layout.setColumnStretch(0,12)
+        self.layout.setColumnStretch(0,11)
         self.layoutBarraBotones = QHBoxLayout()
-        self.layoutBarraBotones.addStretch(1)
         self.layoutBarraBotones.setAlignment(Qt.AlignLeft)
         stockButton = QPushButton("Stock")
         ventasButton = QPushButton("Ventas")
@@ -39,17 +41,20 @@ class Home:
     def createTitlePage(self):
         self.layout.setColumnStretch(1,12)
         bigTitleLabel = QLabel("Control de Stock")
+        bigTitleLabel.setStyleSheet(pageHeader)
         self.layout.addWidget(bigTitleLabel,1,0,1,12)
 
     def createTabSector(self):
         self.layout.setColumnStretch(2,12)
         self.tabsView = QTabWidget()
-        self.tabRegExistencia = QWidget()
-        self.tabCrearProducto = QWidget()
+        registrarAsistenciaWidget = RegistrarAsistencia.RegistrarAsistencia(self.view)
+        crearProductoWidget = CrearProducto.CrearProducto(self.view)
+        self.tabRegExistencia = registrarAsistenciaWidget.getWidgetBuilded()
+        self.tabCrearProducto = crearProductoWidget.getWidgetBuilded()
         self.tabVerExistencias = QWidget()
         self.tabsView.addTab(self.tabRegExistencia, "Registrar existencia")
         self.tabsView.addTab(self.tabCrearProducto, "Crear producto")
-        self.tabsView.addTab(self.tabVerExistencias, "Ver exitencias")
+        self.tabsView.addTab(self.tabVerExistencias, "Ver existencias")
         self.layout.addWidget(self.tabsView,2,0,1,12)
 
 
