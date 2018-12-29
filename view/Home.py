@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-from view import RegistrarAsistencia
-from view import CrearProducto
+from view.RegistrarExistencia import RegistrarExistencia
+from view.CrearProducto import CrearProducto
+from view.Existencias import Existencias
 from util.styles import primaryButton, controlLabel, pageHeader
 
 class Home:
@@ -47,11 +48,12 @@ class Home:
     def createTabSector(self):
         self.layout.setColumnStretch(2,12)
         self.tabsView = QTabWidget()
-        registrarAsistenciaWidget = RegistrarAsistencia.RegistrarAsistencia(self.view)
-        crearProductoWidget = CrearProducto.CrearProducto(self.view)
-        self.tabRegExistencia = registrarAsistenciaWidget.getWidgetBuilded()
+        registrarExistencia = RegistrarExistencia(self.view)
+        crearProductoWidget = CrearProducto(self.view)
+        existenciasWidget = Existencias(self.view)
+        self.tabRegExistencia = registrarExistencia.getWidgetBuilded()
         self.tabCrearProducto = crearProductoWidget.getWidgetBuilded()
-        self.tabVerExistencias = QWidget()
+        self.tabVerExistencias = existenciasWidget.getWidgetBuilded()
         self.tabsView.addTab(self.tabRegExistencia, "Registrar existencia")
         self.tabsView.addTab(self.tabCrearProducto, "Crear producto")
         self.tabsView.addTab(self.tabVerExistencias, "Ver existencias")
