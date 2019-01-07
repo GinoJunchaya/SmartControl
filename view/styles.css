@@ -1,0 +1,77 @@
+QLabel#tituloPrincipal {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+QLabel#tituloGroupSucursal {
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    border: 0px solid transparent;
+    background: transparent;
+}
+
+QLabel#controlLabel {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+QLabel#subtituloGroupSucursal {
+    font-size: 10px;
+    color: white;
+    border: 0px solid transparent;
+    background: transparent;
+}
+
+QPushButton#botonPrimario {
+    background: #337ab7;
+    font-weight: bold;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QPushButton#botonPrimario:hover {
+    background: white;
+    color: #337ab7;
+    border: 1px solid #337ab7;
+}
+
+QPushButton#botonPrimario:focus {
+    border: 1px solid silver;
+}
+
+QPushButton#botonModulo {
+    background: #337ab7;
+    font-weight: bold;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QPushButton#botonModulo:hover {
+    background: white;
+    color: #337ab7;
+    border: 1px solid #337ab7;
+}
+
+QPushButton#botonModulo:focus {
+    border: 1px solid silver;
+}
+
+QLineEdit#entradaTexto {
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit#entradaTexto:focus {
+    border: 1px solid #337ab7;
+}
+
+QGroupBox#sucursalesBox {
+    border: 1px solid silver;
+    border-radius: 5px;
+}

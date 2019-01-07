@@ -22,34 +22,48 @@ class CrearProducto:
 
         bigTitleLabel = QLabel("Crear producto")
         bigTitleLabel.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
-        bigTitleLabel.setStyleSheet(pageHeader)
+        bigTitleLabel.setObjectName("tituloPrincipal")
+        with open("./view/styles.css") as f:
+            bigTitleLabel.setStyleSheet(f.read())
 
         descripcionLabel = QLabel("Descripción : ")
         descripcionLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        descripcionLabel.setStyleSheet(controlLabel)
+        descripcionLabel.setObjectName("controlLabel")
+        with open("./view/styles.css") as f:
+            descripcionLabel.setStyleSheet(f.read())
 
         categoriaLabel = QLabel("Categoría : ")
         categoriaLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        categoriaLabel.setStyleSheet(controlLabel)         
+        categoriaLabel.setObjectName("controlLabel")
+        with open("./view/styles.css") as f:
+            categoriaLabel.setStyleSheet(f.read())
 
         precioLabel = QLabel("Precio : ")
         precioLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        precioLabel.setStyleSheet(controlLabel)
+        precioLabel.setObjectName("controlLabel")
+        with open("./view/styles.css") as f:
+            precioLabel.setStyleSheet(f.read())
 
         stockMinimoLabel = QLabel("Stock minimo : ")
         stockMinimoLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        stockMinimoLabel.setStyleSheet(controlLabel)
+        stockMinimoLabel.setObjectName("controlLabel")
+        with open("./view/styles.css") as f:
+            stockMinimoLabel.setStyleSheet(f.read())
 
-        self.addPhotoButton = QPushButton("Agregar imagen")
-        self.addPhotoButton.setStyleSheet("height: 100%")
+        self.addPhotoButton = QPushButton("")
+        self.addPhotoButton.setStyleSheet("background-image: url(add.png); background-repeat: no-repeat; background-size: cover; height: 160px; background-position: center; border: 0px solid transparent")
         self.addPhotoButton.clicked.connect(self.seleccionarImagen)
 
         self.createButton = QPushButton("Crear")
-        self.createButton.setStyleSheet(primaryButton)
+        self.createButton.setObjectName("botonPrimario")
+        with open("./view/styles.css") as f:
+            self.createButton.setStyleSheet(f.read())
         self.createButton.clicked.connect(self.handlerInsertarProducto)
 
         self.cleanButton = QPushButton("Limpiar")
-        self.cleanButton.setStyleSheet(primaryButton)
+        self.cleanButton.setObjectName("botonPrimario")
+        with open("./view/styles.css") as f:
+            self.cleanButton.setStyleSheet(f.read())
 
         self.inputDescripcion = QLineEdit()
         self.inputPrecio = QLineEdit()
@@ -84,7 +98,6 @@ class CrearProducto:
         descripcion = self.inputDescripcion.text()
         precio = int(self.inputPrecio.text())
         categoria = self.inputCategoria.itemData(self.inputCategoria.currentIndex())
-        print(categoria.idCategoria)
         stockMinimo = int(self.inputStockMinimo.text())
         producto = Producto(descripcion=descripcion, idCategoria=categoria.idCategoria, precio=precio,\
         stockMinimo=stockMinimo, stockActual=0, idSucursal=3)
@@ -92,6 +105,8 @@ class CrearProducto:
 
     def seleccionarImagen(self):
         imagenFile = QFileDialog.getOpenFileName()
+        if len(imagenFile[0]) == 0:
+            return
         self.addPhotoButton.setIcon(QIcon(imagenFile[0]))
         self.addPhotoButton.setIconSize(QSize(100,150))
         self.addPhotoButton.setText("")

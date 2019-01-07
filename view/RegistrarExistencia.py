@@ -22,19 +22,27 @@ class RegistrarExistencia:
 
         precioLabel = QLabel("Precio : ")
         precioLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        precioLabel.setStyleSheet(controlLabel) 
+        precioLabel.setObjectName("controlLabel")
+        with open("./view/styles.css") as f:
+            precioLabel.setStyleSheet(f.read())
 
         vtoLabel = QLabel("Vencimiento : ")
         vtoLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        vtoLabel.setStyleSheet(controlLabel) 
+        vtoLabel.setObjectName("controlLabel")
+        with open("./view/styles.css") as f:
+            vtoLabel.setStyleSheet(f.read())
 
         cantidadLabel = QLabel("Cantidad : ")
         cantidadLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        cantidadLabel.setStyleSheet(controlLabel) 
+        cantidadLabel.setObjectName("controlLabel")
+        with open("./view/styles.css") as f:
+            cantidadLabel.setStyleSheet(f.read())
 
         productoLabel = QLabel("Producto : ")
         productoLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        productoLabel.setStyleSheet(controlLabel)         
+        productoLabel.setObjectName("controlLabel")
+        with open("./view/styles.css") as f:
+            productoLabel.setStyleSheet(f.read())
 
         self.inputProducto = QComboBox()
         self.inputProducto.currentIndexChanged[int].connect(self.changeProducto)
@@ -46,10 +54,18 @@ class RegistrarExistencia:
         self.inputCantidad = QLineEdit()
         self.inputVencimiento = QDateEdit(QDate.currentDate())
         self.inputVencimiento.setDisplayFormat("dd/MM/yyyy")
-        self.registrarButton = QPushButton("Registrar")
-        self.limpiarButton = QPushButton("Limpiar")
 
-        self.layoutRegistrarExistencia.addWidget(bigTitleLabel,0,0,1,10)        
+        self.registrarButton = QPushButton("Registrar")
+        self.registrarButton.setObjectName("botonPrimario")
+        with open("./view/styles.css") as f:
+            self.registrarButton.setStyleSheet(f.read())
+
+        self.limpiarButton = QPushButton("Limpiar")
+        self.limpiarButton.setObjectName("botonPrimario")
+        with open("./view/styles.css") as f:
+            self.limpiarButton.setStyleSheet(f.read())
+
+        self.layoutRegistrarExistencia.addWidget(bigTitleLabel,0,0,1,10)
 
         self.layoutRegistrarExistencia.addWidget(productoLabel,1,0,1,1)
         self.layoutRegistrarExistencia.addWidget(self.inputProducto,1,1,1,2)

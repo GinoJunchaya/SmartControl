@@ -18,13 +18,16 @@ class Existencias:
         self.tablaExistencias.setRowCount(len(self.productos))
         self.tablaExistencias.setColumnCount(6)
         header = self.tablaExistencias.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.ResizeToContents)       
+        header.setSectionResizeMode(QHeaderView.ResizeToContents)
         self.tablaExistencias.setHorizontalHeaderItem(0, QTableWidgetItem("ID"))
         self.tablaExistencias.setHorizontalHeaderItem(1, QTableWidgetItem("DESCRIPCION"))
         self.tablaExistencias.setHorizontalHeaderItem(2, QTableWidgetItem("CATEGORIA"))
         self.tablaExistencias.setHorizontalHeaderItem(3, QTableWidgetItem("STOCK MINIMO"))
         self.tablaExistencias.setHorizontalHeaderItem(4, QTableWidgetItem("STOCK ACTUAL"))
-        self.tablaExistencias.setHorizontalHeaderItem(5, QTableWidgetItem("PRECIO"))        
+        self.tablaExistencias.setHorizontalHeaderItem(5, QTableWidgetItem("PRECIO"))
+        self.tablaExistencias.horizontalHeader().setStyleSheet("QHeaderView::section {background: #337ab7; color: white; font-weight: bold; border: 1px solid silver; padding: 5px}")
+        self.tablaExistencias.verticalHeader().setStyleSheet("QHeaderView::section {background: #337ab7; color: white; font-weight: bold; border: 1px solid silver; padding: 5px}")        
+        self.tablaExistencias.setStyleSheet("border-top: 0px solid transparent; border-left: 0px solid transparent")
         count = 0
         for i in self.productos:
             if count > 0:
